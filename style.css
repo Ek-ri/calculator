@@ -13,3 +13,18 @@ body {
 #display {
     border-style: solid;
 }
+
+#rowOne,
+#rowTwo,
+#rowThree,
+#rowFour,
+#rowFive {
+    display: flex;
+    justify-content: space-between;
+}
+
+#equal {
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+}
