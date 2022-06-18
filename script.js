@@ -14,10 +14,12 @@ const one = document.getElementById('oneBtn')
 const zero = document.getElementById('zeroBtn')
 const dec = document.getElementById('decimalBtn')
 const clear = document.getElementById('clearBtn')
+const equal = document.getElementById('equal')
 
 let num1 = null
 let num2 = null
 let operator = null
+let result = null
 
 plus.onclick = () => setOperator('add')
 minus.onclick = () => setOperator('subtract')
@@ -33,6 +35,7 @@ three.onclick = () => setNum('3')
 two.onclick = () => setNum('2')
 one.onclick = () => setNum('1')
 zero.onclick = () => setNum('0')
+equal.onclick = () => operate(num1, num2, operator)
 
 function setNum (num) {
     if ((num1 === null) && (operator=== null)) {
@@ -79,15 +82,15 @@ function divide(a, b) {
 function operate(num1, num2, operator) {
     operator = operator.toLowerCase()
     if (operator === 'add') {
-        return add(num1, num2);
+        result = add(num1, num2);
     }
     if (operator === 'subtract') {
-        return subtract(num1, num2);
+        result = subtract(num1, num2);
     }
     if (operator === "multiply") {
-        return multiply(num1, num2);
+        result = multiply(num1, num2);
     }
     if (operator === "divide") {
-        return divide(num1, num2);
+        result = divide(num1, num2);
     }
 }
