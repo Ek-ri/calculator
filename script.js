@@ -22,6 +22,7 @@ let num2 = null
 let operator = null
 let symbol = null
 let result = null
+let lastPressed = null
 
 plus.onclick = () => setOperator('add')
 minus.onclick = () => setOperator('subtract')
@@ -40,7 +41,14 @@ zero.onclick = () => setNum('0')
 equal.onclick = () => operate(num1, num2, operator)
 clear.onclick = () => clearVars()
 
+
 function setNum (num) {
+    if ((lastPressed === 'equal') && result) {
+        num1 = null;
+        num2 = null;
+        operator = null;
+        result = null;
+    }
     if ((num1 === null) && (operator=== null)) {
         num1 = num
         display.textContent = num1
@@ -55,10 +63,16 @@ function setNum (num) {
         num2 += num
         display.textContent = `${num1} ${symbol} ${num2}`
     }
+    lastPressed = 'num'
 }
 
 function setOperator(opp) {
     operator = opp;
+    if (lastPressed === 'equal') {
+        num1 = result
+        result = null
+        num2 = null
+    }
     if (opp === 'add') {
         symbol = '+'
         display.textContent = `${num1} ${symbol}`
@@ -72,6 +86,7 @@ function setOperator(opp) {
         symbol = '/'
         display.textContent = `${num1} ${symbol}`
     }
+    lastPressed = 'opp'
 }
 
 function add(a, b) {
@@ -103,16 +118,21 @@ function operate(num1, num2, operator) {
     operator = operator.toLowerCase()
     if (operator === 'add') {
         result = add(num1, num2);
+        num1 = result
     }
     if (operator === 'subtract') {
         result = subtract(num1, num2);
+        num1 = result
     }
     if (operator === "multiply") {
         result = multiply(num1, num2);
+        num1 = result
     }
     if (operator === "divide") {
         result = divide(num1, num2);
+        num1 = result
     }
+    lastPressed = 'equal'
     display.textContent = result
 }
 
