@@ -38,6 +38,7 @@ two.onclick = () => setNum('2')
 one.onclick = () => setNum('1')
 zero.onclick = () => setNum('0')
 equal.onclick = () => operate(num1, num2, operator)
+clear.onclick = () => clearVars()
 
 function setNum (num) {
     if ((num1 === null) && (operator=== null)) {
@@ -113,4 +114,11 @@ function operate(num1, num2, operator) {
         result = divide(num1, num2);
     }
     display.textContent = result
+}
+
+function clearVars() {
+    num1 = null;
+    num2 = null;
+    operator = null;
+    display.textContent = ' '
 }
