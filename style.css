@@ -18,6 +18,8 @@ button {
 
 #display {
     border-style: solid;
+    min-width: 100px;
+    min-height: 20px;
 }
 
 #rowOne,
