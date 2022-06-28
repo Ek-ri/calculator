@@ -23,6 +23,8 @@ let operator = null
 let symbol = null
 let result = null
 let lastPressed = null
+let decOneExists = false
+let decTwoExists = false
 
 plus.onclick = () => setOperator('add')
 minus.onclick = () => setOperator('subtract')
@@ -40,6 +42,13 @@ one.onclick = () => setNum('1')
 zero.onclick = () => setNum('0')
 equal.onclick = () => operate(num1, num2, operator)
 clear.onclick = () => clearVars()
+
+/*if (decOneExists === 0 && num1) {
+    dec.onclick = () => num1 += '.'
+}
+if (decTwoExists === 0 && num2) {
+    dec.onclick = () => num2 += '.'
+}*/
 
 
 function setNum (num) {
@@ -67,6 +76,12 @@ function setNum (num) {
 }
 
 function setOperator(opp) {
+    if (num1 === null) {
+        return
+    }
+    if (operator !== null) {
+        operate(num1, num2, operator)
+    }
     operator = opp;
     if (lastPressed === 'equal') {
         num1 = result
